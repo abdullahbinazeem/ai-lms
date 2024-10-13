@@ -2,7 +2,6 @@ import React from "react";
 
 import prisma from "@/lib/db";
 import Container from "@/components/container";
-import { Play, File } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 

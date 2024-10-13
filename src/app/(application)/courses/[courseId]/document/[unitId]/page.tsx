@@ -1,7 +1,7 @@
 import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
 import prisma from "@/lib/db";
-import { Play, File, Check } from "lucide-react";
+import { File, Check } from "lucide-react";
 
 import Link from "next/link";
 

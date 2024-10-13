@@ -12,12 +12,14 @@ const DeleteCourse = ({ courseId }: { courseId: string }) => {
 
   const deleteCourse = async (url: string) => {
     try {
-      const res = await axios.delete(`/api/courses/${url}`);
+      await axios.delete(`/api/courses/${url}`);
 
       toast.success("Course deleted successfully");
       router.refresh();
     } catch (err) {
       toast.error("Something went wrong");
+
+      console.log(err);
     }
   };
 

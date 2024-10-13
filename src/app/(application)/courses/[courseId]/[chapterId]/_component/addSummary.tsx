@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { Loader, Play, Captions } from "lucide-react";
+import { Loader, Captions } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";

@@ -1,8 +1,6 @@
 import prisma from "@/lib/db";
-import { auth } from "@clerk/nextjs/server";
 import axios from "axios";
 import { NextResponse } from "next/server";
-import { YoutubeTranscript } from "youtube-transcript";
 
 interface ChapterIdParams {
   params: {

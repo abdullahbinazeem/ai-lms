@@ -6,14 +6,8 @@ import Link from "next/link";
 import AddCourse from "./_component/addCourse";
 import DeleteCourse from "./_component/deleteCourse";
 
-import axios from "axios";
-
 const page = async () => {
   const courses = await prisma.course.findMany({});
-
-  const deleteCourse = async (url: string) => {
-    await axios.delete(`/api/course/${url}`);
-  };
 
   return (
     <Container className="text-black grainy overflow-hidden min-h-[100vh]">
@@ -46,6 +40,7 @@ const page = async () => {
           {courses.map((course) => {
             return (
               <div
+                key={course.id}
                 className="bg-white text-black shadow-[0px_3px_rgba(0,_98,_90,_0.4)_2px,_0px_8px_rgba(0,_98,_90,_0.3)_4px] shadow-slate-900/50
                 h-24 overflow-hidden border-[2px] rounded-md border-black
                 transition-all
