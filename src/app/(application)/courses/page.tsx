@@ -2,10 +2,18 @@ import Container from "@/components/container";
 import React from "react";
 import prisma from "@/lib/db";
 import Link from "next/link";
+
 import AddCourse from "./_component/addCourse";
+import DeleteCourse from "./_component/deleteCourse";
+
+import axios from "axios";
 
 const page = async () => {
   const courses = await prisma.course.findMany({});
+
+  const deleteCourse = async (url: string) => {
+    await axios.delete(`/api/course/${url}`);
+  };
 
   return (
     <Container className="text-black grainy overflow-hidden min-h-[100vh]">
@@ -37,23 +45,25 @@ const page = async () => {
         <div className="grid grid-cols-5 gap-5 object-fill">
           {courses.map((course) => {
             return (
-              <Link
-                href={`/courses/${course.id}`}
-                key={course.id}
+              <div
                 className="bg-white text-black shadow-[0px_3px_rgba(0,_98,_90,_0.4)_2px,_0px_8px_rgba(0,_98,_90,_0.3)_4px] shadow-slate-900/50
-                h-24 overflow-hidden border-[2px] rounded-xl border-black
+                h-24 overflow-hidden border-[2px] rounded-md border-black
                 transition-all
-                hover:bg-green-200
                 hover:scale-[1.05]
                 hover:translate-y-[-0.2em]"
               >
-                <div className="grid grid-cols-[15fr_85fr] h-full w-full">
-                  <div className="bg-main h-full w-full border-r-2 border-black"></div>
-                  <p className="p-1 text-md font-semibold capi           talize">
-                    {course.name}
-                  </p>
+                <Link href={`/courses/${course.id}`} key={course.id}>
+                  <div className="grid grid-cols-[15fr_85fr] h-full w-full relative z-0">
+                    <div className="bg-main h-full w-full border-r-2 border-black"></div>
+                    <p className="p-1 text-md font-semibold capi           talize">
+                      {course.name}
+                    </p>
+                  </div>
+                </Link>
+                <div className="relative">
+                  <DeleteCourse courseId={course.id} />
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>
