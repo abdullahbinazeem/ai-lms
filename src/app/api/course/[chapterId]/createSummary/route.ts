@@ -1,29 +1,14 @@
 import prisma from "@/lib/db";
 import { NextResponse } from "next/server";
-import { YoutubeTranscript } from "youtube-transcript";
-
+import { getTranscript } from "@/lib/getTranscript"; // Update the path as needed
 import OpenAI from "openai";
+
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 interface ChapterIdParams {
   params: {
     chapterId: string;
   };
-}
-
-export async function getTranscript(videoId: string) {
-  try {
-    let transcript_arr = await YoutubeTranscript.fetchTranscript(videoId, {
-      lang: "en",
-    });
-    let transcript = "";
-    for (const t of transcript_arr) {
-      transcript += t.text + " ";
-    }
-    return transcript.replaceAll("\n", "");
-  } catch (error) {
-    return "";
-  }
 }
 
 export async function POST(req: Request, { params }: ChapterIdParams) {
@@ -35,7 +20,7 @@ export async function POST(req: Request, { params }: ChapterIdParams) {
     });
 
     if (chapter?.videoId) {
-      const transcript = await getTranscript(chapter?.videoId);
+      const transcript = (await getTranscript(chapter?.videoId)) || "";
 
       if (!transcript) {
         return new NextResponse("No Transcript Found", { status: 404 });
