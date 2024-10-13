@@ -1,6 +1,6 @@
 import prisma from "@/lib/db";
 import { NextResponse } from "next/server";
-import { getTranscript } from "@/lib/getTranscript"; // Update the path as needed
+import { getTranscript } from "@/lib/getTranscript";
 import OpenAI from "openai";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });

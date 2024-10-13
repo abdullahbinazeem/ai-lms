@@ -6,12 +6,13 @@ export async function getTranscript(videoId: string): Promise<string> {
       lang: "en",
     });
     let transcript = "";
-    for (let t of transcript_arr) {
+    for (const t of transcript_arr) {
       transcript += t.text + " ";
     }
 
     return transcript.replaceAll("\n", "");
   } catch (error) {
+    console.log(error);
     return "";
   }
 }
