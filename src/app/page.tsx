@@ -1,100 +1,120 @@
-import Image from "next/image";
+import Container from "@/components/container";
+import { Button } from "@/components/ui/button";
+import { UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <div className="text-white">
+      <div className="bg-gradient-to-b to-black from-slate-800 min-h-screen">
+        <Container>
+          <div className="border-b-2 border-muted">
+            <ul className="flex justify-between items-center py-2">
+              <li className="text-4xl font-bold">
+                <a className="flex flex-row" href="/">
+                  <img src="plain-circle.svg" alt="" className="p-2" />
+                  UTutor
+                </a>
+              </li>
+              <div className="flex gap-8">
+                <li className="hover:text-purple-300">
+                  <a href="#">Home</a>
+                </li>
+                <li className="hover:text-purple-300">
+                  <a href="#section-about">About</a>
+                </li>
+                <li className="hover:text-purple-300">
+                  <a href="/courses">My Courses</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+          <div className="h-96 mt-16 grid grid-cols-2">
+            <span className="flex flex-col justify-center">
+              <h1 className="font-bold text-6xl">Learn new skills with ease</h1>
+              <p className="text-slate-500 italic mt-2">
+                By harnessing the power of AI to boost your learning.
+              </p>
+              <Link href="/courses" className="w-[110px]">
+                <Button className="w-full bg-main mt-4">Get Started</Button>
+              </Link>
+            </span>
+            <img
+              src="images/brand-image-transparent.png"
+              alt="Branding image"
+              className="bg-cover bg-center"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+        </Container>
+      </div>
+      <div className="bg-gradient-to-t to-black from-slate-800  min-h-screen">
+        <Container>
+          <div id="section-about" className="flex flex-col items-center">
+            <div className="w-[60%] border-t-2 border-muted"></div>
+            <h2 className="mt-8 font-bold text-white text-4xl">About</h2>
+          </div>
+          {/* Gallery */}
+          <div className="flex flex-col items-center text-slate-500 italic">
+            {/* Cards */}
+            <div className="mr-96 mt-12 hover:text-white hover:scale-105 transition-all">
+              <div className="border-2 rounded-xl border-slate-500 p-4">
+                <p>
+                  By using UTutor, you can generate full courses on any topic.
+                  Courses come with a full AI-powered curriculum which includes
+                  multiple unit, each containing lessons with a full summary and
+                  video.
+                </p>
+              </div>
+            </div>
+            <div className="ml-96 mt-24 hover:text-white hover:scale-105 transition-all">
+              <div className="border-2 rounded-xl border-slate-500 p-4">
+                <p>
+                  With no need to spend hours building your own roadmaps or
+                  searching for hard-to-find resources, you&apos;ll save tons of
+                  time while cruising forward with your studies.
+                </p>
+              </div>
+            </div>
+            <div className="mr-96 mt-24 hover:text-white hover:scale-105 transition-all">
+              <div className="border-2 rounded-xl border-slate-500 p-4">
+                <p>
+                  Courses can be built for any topic, no matter how obscure.
+                  From learning Greek to mastering the art of pumpkin carving,
+                  there are no limits to the kinds of courses you can create.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </div>
+      <footer className="left-0 right-0 bg-slate-900 border-t-2 border-white">
+        <div className="py-6 px-16 flex flex-row justify-center gap-x-8 text-slate-400">
+          <ul>
+            <li className="text-white font-bold">
+              <h3>Contact Us</h3>
+            </li>
+            <li>
+              <a href="#">Email</a>
+            </li>
+            <li>
+              <a href="#">Phone</a>
+            </li>
+          </ul>
+          <ul>
+            <li className="text-white font-bold">
+              <h3>
+                <a href="#">Privacy Policy</a>
+              </h3>
+            </li>
+          </ul>
+          <ul>
+            <li className="text-white font-bold">
+              <h3>
+                <a href="#">Support</a>
+              </h3>
+            </li>
+          </ul>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
       </footer>
     </div>
   );
