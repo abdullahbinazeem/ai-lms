@@ -40,7 +40,7 @@ export async function POST(req: Request, res: Response) {
         )}`,
       },
     ],
-    model: "gpt-3.5-turbo",
+    model: "gpt-4.1-mini",
     response_format: { type: "json_object" },
   });
 

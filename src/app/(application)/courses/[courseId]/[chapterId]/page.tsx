@@ -52,13 +52,15 @@ const page = async ({ params: { chapterId, courseId } }: Props) => {
         <h1 className="text-4xl font-medium- py-6 ">{chapter?.name}</h1>
         {chapter?.videoId ? (
           <div className="flex gap-10 items-start">
-            <iframe
-              title="chapter video"
-              className=" aspect-video grow"
-              src={`https://www.youtube.com/embed/${chapter.videoId}`}
-              allowFullScreen
-            />
-            <div className="max-w-[600px]">
+            <div className="flex-[3]">
+              <iframe
+                title="chapter video"
+                className="aspect-video"
+                src={`https://www.youtube.com/embed/${chapter.videoId}`}
+                allowFullScreen
+              />
+            </div>
+            <div className="w-[600px] flex-[2]">
               {chapter?.summary ? (
                 <div>
                   <p className="text-pretty">{chapter?.summary}</p>
